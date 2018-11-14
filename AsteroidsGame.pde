@@ -1,4 +1,3 @@
-//your variable declarations here
 Spaceship ship;
 Star[] stars = new Star[150];
 Asteroid[] astrid = new Asteroid[15];
