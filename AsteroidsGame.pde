@@ -1,6 +1,7 @@
 Spaceship ship;
 Star[] stars = new Star[150];
-Asteroid[] astrid = new Asteroid[15];
+ArrayList <Asteroid> astrid = new ArrayList <Asteroid>();
+
 public void setup() 
 {
   size(600,600);
@@ -9,10 +10,11 @@ public void setup()
   {
   	stars[i] = new Star();
   }
-  for(int i = 0; i < astrid.length; i++)
+  for(int i = 0; i < 16; i++)
   {
-  	astrid[i] = new Asteroid();
+  	astrid.add(new Asteroid());
   }
+
 }
 
 public void draw() 
@@ -24,10 +26,13 @@ public void draw()
 	}
 	ship.show();
 	ship.move();
-	for(int i = 0; i < astrid.length; i++)
+	for(int i = 0; i < astrid.size(); i++)
   	{
-  		astrid[i].show();
-  		astrid[i].move();
+  		astrid.get(i).show();
+  		astrid.get(i).move();
+  		float d = dist(ship.getX(), ship.getY(), astrid.get(i).getX(), astrid.get(i).getY());
+  		if (d < 20)
+  			astrid.remove(i);
   	}
 }
 
